@@ -7,11 +7,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'Electric blue': '#51e5ff',
+        ElectricBlue: '#51e5ff',
         Indigo: '#440381',
         BrightPink: '#ff0077',
         Melon: '#ffa5a5',
-        Apricot: '#ffd6c0'
+        Apricot: '#ffd6c0',
+        White: '#f1f1f1'
       },
 
       fontFamily: {
