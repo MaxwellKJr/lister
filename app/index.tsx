@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'expo-router'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { SafeAreaView, Text, View, TextInput, Pressable } from 'react-native'
 import { styled } from 'nativewind'
@@ -8,12 +9,15 @@ const StyledText = styled(Text)
 const StyledTextInput = styled(TextInput)
 const StyledPressable = styled(Pressable)
 
+interface User {
+  name: string
+}
+
 export default function HomeScreen() {
   const [name, setName] = useState('')
   const handleOnChangeText = (text: string) => setName(text)
 
-  const handleNameSubmit = async () => {
-    const user = { name: name }
+  const handleNameSubmit = async (user: User) => {
     await AsyncStorage.setItem('user', JSON.stringify(user))
   }
 
@@ -46,15 +50,16 @@ export default function HomeScreen() {
           }
           onPress={handleNameSubmit}
         >
-          <StyledText
+          <Link
+            href="/home"
             className={
               name.trim().length >= 1
                 ? `text-center font-bold text-xl`
                 : `text-center font-bold text-xl border-gray-800`
             }
           >
-            Enter name
-          </StyledText>
+            <StyledText>Enter name</StyledText>
+          </Link>
         </StyledPressable>
       </StyledView>
     </SafeAreaView>

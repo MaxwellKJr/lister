@@ -1,18 +1,34 @@
 import { SafeAreaView, Text, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { styled } from 'nativewind'
+import { useEffect, useState } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const StyledView = styled(View)
 const StyledText = styled(Text)
 
 export default function HomeScreen() {
+  const [user, setUser] = useState({})
+
+  const fetchUser = async () => {
+    const result = await AsyncStorage.getItem('user')
+
+    if (result !== null) {
+      setUser(JSON.parse(result))
+    }
+  }
+
+  useEffect(() => {
+    fetchUser()
+  }, [])
+
   return (
     <SafeAreaView>
       {/* Greetings Section */}
       <StyledView className="flex flex-col p-4 justify-center bg-Apricot">
         <StyledView className="flex flex-col py-4 mt-10">
           <StyledText className="text-white text-lg">Hello,</StyledText>
-          <StyledText className="text-white font-black text-3xl">Maxwell.</StyledText>
+          <StyledText className="text-white font-black text-3xl">{user.name}</StyledText>
         </StyledView>
 
         {/* Reminder Section */}
