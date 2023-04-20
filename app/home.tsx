@@ -1,5 +1,4 @@
 import { SafeAreaView, Text, View } from 'react-native'
-import { StatusBar } from 'expo-status-bar'
 import { styled } from 'nativewind'
 import { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -7,8 +6,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 const StyledView = styled(View)
 const StyledText = styled(Text)
 
+interface User {
+  name: string
+}
+
 export default function HomeScreen() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState<User>({ name: '' })
 
   const fetchUser = async () => {
     const result = await AsyncStorage.getItem('user')
@@ -27,17 +30,17 @@ export default function HomeScreen() {
       {/* Greetings Section */}
       <StyledView className="flex flex-col p-4 justify-center bg-Apricot">
         <StyledView className="flex flex-col py-4 mt-10">
-          <StyledText className="text-white text-lg">Hello,</StyledText>
-          <StyledText className="text-white font-black text-3xl">{user.name}</StyledText>
+          <StyledText className="text-black text-lg">Hello,</StyledText>
+          <StyledText className="text-black font-black text-3xl">{user.name}</StyledText>
         </StyledView>
 
         {/* Reminder Section */}
-        <StyledView className="mt-4 px-4 py-6 bg-pink-500 rounded-2xl">
+        <StyledView className="mt-4 px-4 py-6 bg-White rounded-2xl">
           <StyledView className="">
-            <StyledText className="font-bold text-xl text-white">
+            <StyledText className="font-bold text-xl text-black">
               Alright, what is on your mind?
             </StyledText>
-            <StyledText className="text-white text-md">
+            <StyledText className="text-black text-md">
               Remember, lists are things you care about at the moment.
             </StyledText>
           </StyledView>
@@ -45,10 +48,10 @@ export default function HomeScreen() {
 
         <StyledView className="mt-5">
           <StyledView>
-            <StyledText className="font-bold text-white text-2xl mb-4">Current Lists</StyledText>
+            <StyledText className="font-bold text-black text-2xl mb-4">Current Lists</StyledText>
             <StyledView>
-              <StyledView className="p-4 bg-pink-800 rounded-2xl">
-                <StyledText className="text-white">Call Her</StyledText>
+              <StyledView className="p-4 bg-ElectricBlue rounded-2xl">
+                <StyledText className="text-black">Call Her</StyledText>
               </StyledView>
             </StyledView>
           </StyledView>
