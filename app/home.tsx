@@ -28,7 +28,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView>
       {/* Greetings Section */}
-      <StyledView className="flex flex-col p-4 justify-center bg-Apricot">
+      <StyledView className="flex h-screen flex-col p-4 bg-Apricot">
         <StyledView className="flex flex-col py-4 mt-10">
           <StyledText className="text-black text-lg">Hello,</StyledText>
           <StyledText className="text-black font-black text-3xl">{user.name}</StyledText>
@@ -46,12 +46,13 @@ export default function HomeScreen() {
           </StyledView>
         </StyledView>
 
+        {/* Lists Section */}
         <StyledView className="mt-5">
           <StyledView>
             <StyledText className="font-bold text-black text-2xl mb-4">Current Lists</StyledText>
             <StyledView>
-              <StyledView className="p-4 bg-ElectricBlue rounded-2xl">
-                <StyledText className="text-black">Call Her</StyledText>
+              <StyledView className="p-4 mb-2 bg-black rounded-2xl">
+                <StyledText className="text-White">Call Her</StyledText>
               </StyledView>
             </StyledView>
           </StyledView>
