@@ -9,10 +9,6 @@ const StyledText = styled(Text)
 const StyledTextInput = styled(TextInput)
 const StyledPressable = styled(Pressable)
 
-interface User {
-  name: string
-}
-
 export default function WelcomeScreen() {
   const [userName, setUserName] = useState('')
   const handleOnChangeText = (text: string) => setUserName(text)
